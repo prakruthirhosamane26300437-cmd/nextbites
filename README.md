@@ -1,36 +1,60 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# NextBites — Part 1
 
-## Getting Started
+A Next.js App Router and TypeScript recipe home page, scaffolded with create-next-app.
 
-First, run the development server:
+## Run
+
+Requires Node.js 20.9 or newer and npm.
 
 ```bash
+npm install
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Open http://localhost:3000. Stop with Ctrl+C.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Verify
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+```bash
+npx tsc --noEmit
+npx eslint .
+npm run build
+```
 
-## Learn More
+## Assignment requirements
 
-To learn more about Next.js, take a look at the following resources:
+- app/data/recipes.ts: one exported Recipe type and four recipes.
+- components/RecipeCard.tsx: reusable component with a typed recipe prop.
+- app/layout.tsx: shared navbar wrapping children.
+- app/page.tsx: data-driven grid using map and stable recipe IDs.
+- app/globals.css: responsive auto-fit grid and page styling.
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+Recipe illustrations use emoji, so no external image service is needed.
+Search, recipe detail pages, and deployment belong to later parts.
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+## GitHub submission
 
-## Deploy on Vercel
+This archive includes real local Git history. Enable hidden files when inspecting .git.
+The main branch has the scaffold; feature/home-page has the assignment changes.
+After extracting, open a terminal INSIDE this folder. Do not run git init again.
+Create an EMPTY PUBLIC repository named nextbites on GitHub (no README or license).
+Replace YOUR_USERNAME in the command below:
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+```bash
+git remote add origin https://github.com/YOUR_USERNAME/nextbites.git
+git push -u origin main
+git push -u origin feature/home-page
+```
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+On GitHub open a PR with base main and compare feature/home-page.
+Use title: Build NextBites Part 1: Repo setup and home page
+Use PR_DESCRIPTION.md as the description, updating checks to reflect your results.
+Leave the PR open and submit its actual URL in Kalvium.
+Do not submit a repository URL or this ZIP in place of the PR URL.
+
+## Understand the code
+
+Recipe defines the shape of data. RecipeCard receives one recipe through props.
+The home page maps the array to cards, using recipe.id as a stable key.
+RootLayout renders the navbar around the current page through children.
+CSS auto-fit changes the number of columns with available width.
